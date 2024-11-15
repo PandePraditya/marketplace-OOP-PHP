@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
 
         // Debugging: Check the data being sent for update
-        var_dump($data); // Temporary debugging line
+        // var_dump($data);
 
         if ($productController->update($id, $data)) {
             header("Location: ../../index.php");

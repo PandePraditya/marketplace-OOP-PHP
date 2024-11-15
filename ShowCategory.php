@@ -3,14 +3,10 @@ require_once(__DIR__ . '/Config/init.php');
 
 $categoryController = new CategoryController();
 
-// Retrieve all categories to display
-$categories = $categoryController->index(); // Use the index() method to get all categories
-
-// Handle restoring deleted categories (if applicable)
-// Uncomment and modify if you have restore functionality for categories
+$categories = $categoryController->index(); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreCategoryId"])) {
-    $categoryController->restore($_POST["restoreCategoryId"]); // Use the restore() method
+    $categoryController->restore($_POST["restoreCategoryId"]);
     header("Location: ShowCategory.php");
     exit();
 }
@@ -62,9 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreCategoryId"]))
         <?php else: ?>
             <p>No categories found.</p>
         <?php endif; ?>
-
-        <!-- Restore category form (if applicable) -->
-        <!-- Uncomment and modify if you have restore functionality for categories -->
         
         <form method="POST">
             <input type="hidden" name="restoreCategoryId" value="<?php echo $category['id']; ?>">

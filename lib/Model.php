@@ -8,11 +8,11 @@ class Model
 
     public function __construct()
     {
-        $this->db = new Database();
+        $this->db = new Database(); // Create a new instance of the Database class
     }
 
     public function setTableName($tableName)
     {
-        $this->tableName = $tableName;
+        $this->tableName = $tableName; // Set the table name
     }
 }

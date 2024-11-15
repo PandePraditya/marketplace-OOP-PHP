@@ -26,8 +26,8 @@ class Product extends Model
             'product_name' => $data['product_name'],
             'category_id' => $data['category_id'], // Foreign key
             'price' => $data['price'],
-            'stock' => $data['stock'], // Include stock
-            'isDeleted' => 0 // Assuming new products are not deleted
+            'stock' => $data['stock'],
+            'isDeleted' => 0 // default 0
         ];
         return $this->db->insertData($this->tableName, $productData);
     }
@@ -38,7 +38,7 @@ class Product extends Model
             'product_name' => $data['product_name'],
             'category_id' => $data['category_id'], // Foreign key
             'price' => $data['price'],
-            'stock' => $data['stock'] // Include stock
+            'stock' => $data['stock'] 
         ];
         return $this->db->updateData($this->tableName, $id, $productData);
     }

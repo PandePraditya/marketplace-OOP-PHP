@@ -4,7 +4,6 @@ require_once(__DIR__ . '/../../Config/init.php');
 $productController = new ProductController();
 $productDetails = [];
 
-// Get the product ID from the URL
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];
     $productDetails = $productController->show($productId);
@@ -16,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmDelete'])) {
         echo "<script>
                 alert('Product deleted successfully!');
                 window.location.href = '../../index.php';
-              </script>";
+                </script>";
         exit();
     } else {
         echo "<script>alert('Failed to delete product. Please try again later.')</script>";

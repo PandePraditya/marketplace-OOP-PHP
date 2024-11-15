@@ -4,11 +4,9 @@ require_once(__DIR__ . '/Config/init.php');
 $productController = new ProductController();
 $categoryController = new CategoryController();
 
-// Retrieve all products to display
-$products = $productController->index(); // Use the index() method to get all products
+$products = $productController->index();
 
-// Retrieve all categories to create a mapping of category IDs to names
-$categories = $categoryController->index(); // Use the index() method to get all categories
+$categories = $categoryController->index();
 $categoryMap = [];
 foreach ($categories as $category) {
     $categoryMap[$category['id']] = $category['category_name'];
@@ -16,7 +14,7 @@ foreach ($categories as $category) {
 
 // Handle restoring deleted products
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreProductId"])) {
-    $productController->restore($_POST["restoreProductId"]); // Use the restore() method
+    $productController->restore($_POST["restoreProductId"]);
     header("Location: index.php");
     exit();
 }

@@ -4,7 +4,6 @@ include(__DIR__ . '/../../Config/init.php');
 $productController = new ProductController();
 $productDetails = [];
 
-// Get the product ID from the URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $productDetails = $productController->show($id);

@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <button type="submit" class="btn btn-primary">Create Category</button>
-            <a href="../../index.php" class="btn btn-secondary">Cancel</a>
+            <a href="../../ShowCategory.php" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </body>
