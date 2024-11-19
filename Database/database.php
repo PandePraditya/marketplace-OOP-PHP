@@ -3,7 +3,7 @@ require(__DIR__ . '/../Config/init.php');
 
 class Database
 {
-    private $host;
+    private $hostname;
     private $database;
     private $username;
     private $password;
@@ -11,7 +11,7 @@ class Database
 
     public function __construct()
     {
-        $this->host = DB_SERVER;
+        $this->hostname = DB_SERVER;
         $this->database = DB_DATABASE;
         $this->username = DB_USERNAME;
         $this->password = DB_PASSWORD;
@@ -19,7 +19,7 @@ class Database
 
     public function getInstance()
     {
-        $db = $db = "mysql:host={$this->host};dbname={$this->database}";
+        $db = $db = "mysql:host={$this->hostname};dbname={$this->database}";
 
         if (!isset($this->conn)) {
             $this->conn = new PDO($db, $this->username, $this->password);
@@ -42,7 +42,7 @@ class Database
      * @param int $id           : The unique identifier of the record we want to retrieve
      * @param int isDeleted     : the deleted status of the record
      */
-    public function selectData($tableName, $id, $isDeleted = 0)
+    public function selectData($tableName, $id = null, $isDeleted = 0)
     {
         if (empty($id)) {
             $query = "SELECT * FROM {$tableName} WHERE isDeleted = {$isDeleted}";
@@ -70,7 +70,7 @@ class Database
             $stmt->execute($fillable);
             return true;
         } catch (PDOException $e) {
-            return false; // Return false on failure
+            return "Error inserting data: " . $e->getMessage(); // Return false on failure
         }
     }
 
@@ -94,7 +94,7 @@ class Database
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
-            return ("Error updating data: " . $e->getMessage());
+            return "Error updating data: " . $e->getMessage();
         }
     }
 

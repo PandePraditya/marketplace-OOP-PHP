@@ -42,14 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreCategoryId"]))
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($categories as $category): ?>
+                    <?php 
+                        $loopIndex = 1; // Initialize loop index starting from 1
+                        foreach ($categories as $category): 
+                    ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($category['id']); ?></td>
-                            <td><?php echo htmlspecialchars($category['category_name']); ?></td>
+                            <td><?= $loopIndex++; ?></td> <!-- Display sequential number -->
+                            <td><?= htmlspecialchars($category['id']); ?></td> <!-- ID in database -->
+                            <td><?= htmlspecialchars($category['category_name']); ?></td>
                             <td>
-                                <a href="View/category/detail.php?id=<?php echo $category['id']; ?>" class="btn btn-warning btn-sm">Detail</a>
-                                <a href="View/category/update.php?id=<?php echo $category['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="View/category/delete.php?id=<?php echo $category['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="View/category/detail.php?id=<?= $category['id']; ?>" class="btn btn-warning btn-sm">Detail</a>
+                                <a href="View/category/update.php?id=<?= $category['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="View/category/delete.php?id=<?= $category['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -60,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreCategoryId"]))
         <?php endif; ?>
         
         <form method="POST">
-            <input type="hidden" name="restoreCategoryId" value="<?php echo $category['id']; ?>">
-            <button type="submit" class="btn btn-secondary">Restore</button>
+            <input type="hidden" name="restoreCategoryId" value="<?= $category['id']; ?>">
+            <button type="submit" class="btn btn-secondary">Restore All</button>
         </form>
     </div>
 </body>

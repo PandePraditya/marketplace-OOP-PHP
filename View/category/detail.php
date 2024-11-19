@@ -50,16 +50,16 @@ if (isset($_GET['id'])) {
     <div>
         <a href="../../ShowCategory.php" class="btn btn-secondary mb-3">Back to Category List</a>
     
-        <?php if (!empty($categoryDetails)): ?>
+        <?php if (!empty($categoryDetails)): ?> <!-- Check if category details are available -->
             <h2>Category Details</h2>
             <table class="table table-bordered w-50">
                 <tr>
                     <th>ID</th>
-                    <td><?php echo htmlspecialchars($categoryDetails['id']); ?></td>
+                    <td><?= htmlspecialchars($categoryDetails['id']); ?></td>
                 </tr>
                 <tr>
                     <th>Category Name</th>
-                    <td><?php echo htmlspecialchars($categoryDetails['category_name']); ?></td>
+                    <td><?= htmlspecialchars($categoryDetails['category_name']); ?></td>
                 </tr>
             </table>
         <?php else: ?>

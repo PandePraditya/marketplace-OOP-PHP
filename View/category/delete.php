@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmDelete'])) {
 
 <body class="container mt-4">
     <h1>Delete Category</h1>
-    <?php if (!empty($categoryDetails)): ?>
-        <p>Are you sure you want to delete the category "<strong><?php echo htmlspecialchars($categoryDetails['category_name']); ?></strong>"?</p>
+    <?php if (!empty($categoryDetails)): ?> <!-- Check if category details are available -->
+        <p>Are you sure you want to delete the category "<strong><?= htmlspecialchars($categoryDetails['category_name']); ?></strong>"?</p>
         <form method="POST">
             <button type="submit" name="confirmDelete" class="btn btn-danger">Confirm Delete</button>
             <a href="../../index.php" class="btn btn-secondary">Cancel</a>

@@ -6,7 +6,7 @@ $productDetails = [];
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $productDetails = $productController->show($id);
+    $productDetails = $productController->show($id); // Retrieve the product details
 }
 ?>
 
@@ -49,28 +49,28 @@ if (isset($_GET['id'])) {
     <div>
         <a href="../../index.php" class="btn btn-secondary mb-3">Back to Product List</a>
     
-        <?php if (!empty($productDetails)): ?>
+        <?php if (!empty($productDetails)): ?> <!-- Check if product details are available -->
             <h2>Product Details</h2>
             <table class="table table-bordered w-50">
                 <tr>
                     <th>ID</th>
-                    <td><?php echo htmlspecialchars($productDetails['id']); ?></td>
+                    <td><?= htmlspecialchars($productDetails['id']); ?></td>
                 </tr>
                 <tr>
                     <th>Product Name</th>
-                    <td><?php echo htmlspecialchars($productDetails['product_name']); ?></td>
+                    <td><?= htmlspecialchars($productDetails['product_name']); ?></td>
                 </tr>
                 <tr>
                     <th>Category</th>
-                    <td><?php echo htmlspecialchars($productDetails['category_id']); ?></td>
+                    <td><?= htmlspecialchars($productDetails['category_id']); ?></td>
                 </tr>
                 <tr>
                     <th>Price</th>
-                    <td><?php echo htmlspecialchars($productDetails['price']); ?></td>
+                    <td><?= htmlspecialchars($productDetails['price']); ?></td>
                 </tr>
                 <tr>
                     <th>Stock</th>
-                    <td><?php echo htmlspecialchars($productDetails['stock']); ?></td>
+                    <td><?= htmlspecialchars($productDetails['stock']); ?></td>
                 </tr>
             </table>
         <?php else: ?>

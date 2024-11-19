@@ -12,7 +12,7 @@ class Product extends Model
 
     public function getAllProducts()
     {
-        return $this->db->selectData($this->tableName, null);
+        return $this->db->selectData($this->tableName);
     }
 
     public function getProductById($id)

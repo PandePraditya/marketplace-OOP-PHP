@@ -24,7 +24,7 @@ class Category extends Model
     {
         // call database selectData
         // return fetched data
-        return $this->db->selectData($this->tableName, null);
+        return $this->db->selectData($this->tableName, null); // null is the id
     }
 
 
@@ -32,7 +32,6 @@ class Category extends Model
     {
         // call database selectData with id
         // return fetched data
-        $conditions = ['id' => $id];
         return $this->db->selectData($this->tableName, $id);
     }
 
@@ -48,7 +47,7 @@ class Category extends Model
     public function updateCategory($id, $data)
     {
         // call updateData
-        //return boolean
+        // return boolean
         $categoryData = ['category_name' => $data['category_name']];
         return $this->db->updateData($this->tableName, $id, $categoryData);
     }
@@ -63,6 +62,6 @@ class Category extends Model
     public function restoreCategory($id)
     {
         // call restoreRecord
-        return $this->db->restoreRecord($this->tableName);
+        return $this->db->restoreRecord($this->tableName, $id);
     }
 }

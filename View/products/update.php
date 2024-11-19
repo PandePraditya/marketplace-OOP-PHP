@@ -99,9 +99,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="POST">
             <div class="mb-3">
                 <label for="product_name" class="form-label">Product Name</label>
-                <input type="text" name="product_name" class="form-control" id="product_name" value="<?php echo htmlspecialchars($product_name); ?>">
+                <input type="text" name="product_name" class="form-control" id="product_name" value="<?= htmlspecialchars($product_name); ?>">
                 <?php if (isset($errors['product_name'])): ?>
-                    <div class="text-danger"><?php echo $errors['product_name']; ?></div>
+                    <div class="text-danger"><?= $errors['product_name']; ?></div>
                 <?php endif; ?>
             </div>
 
@@ -110,29 +110,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <select name="category_id" class="form-select" id="category_id">
                     <option value="">Select Category</option>
                     <?php foreach ($categories as $category): ?>
-                        <option value="<?php echo $category['id']; ?>" <?php echo (isset($category_id) && $category_id == $category['id']) ? 'selected' : ''; ?>>
-                            <?php echo htmlspecialchars($category['category_name']); ?>
+                        <option value="<?= $category['id']; ?>" <?= (isset($category_id) && $category_id == $category['id']) ? 'selected' : ''; ?>>
+                            <?= htmlspecialchars($category['category_name']); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
                 <?php if (isset($errors['category_id'])): ?>
-                    <div class="text-danger"><?php echo $errors['category_id']; ?></div>
+                    <div class="text-danger"><?= $errors['category_id']; ?></div>
                 <?php endif; ?>
             </div>
 
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" name="price" class="form-control" id="price" value="<?php echo htmlspecialchars($price); ?>">
+                <input type="text" name="price" class="form-control" id="price" value="<?= htmlspecialchars($price); ?>">
                 <?php if (isset($errors['price'])): ?>
-                    <div class="text-danger"><?php echo $errors['price']; ?></div>
+                    <div class="text-danger"><?= $errors['price']; ?></div>
                 <?php endif; ?>
             </div>
 
             <div class="mb-3">
                 <label for="stock" class="form-label">Stock</label>
-                <input type="number" name="stock" class="form-control" id="stock" value="<?php echo htmlspecialchars($stock); ?>">
+                <input type="number" name="stock" class="form-control" id="stock" value="<?= htmlspecialchars($stock); ?>">
                 <?php if (isset($errors['stock'])): ?>
-                    <div class="text-danger"><?php echo $errors['stock']; ?></div>
+                    <div class="text-danger"><?= $errors['stock']; ?></div>
                 <?php endif; ?>
             </div>
 

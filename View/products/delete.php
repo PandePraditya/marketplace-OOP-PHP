@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmDelete'])) {
 
 <body class="container mt-4">
     <h1>Delete Product</h1>
-    <?php if (!empty($productDetails)): ?>
-        <p>Are you sure you want to delete the product "<strong><?php echo htmlspecialchars($productDetails['product_name']); ?></strong>"?</p>
+    <?php if (!empty($productDetails)): ?> <!-- Check if product details are available -->
+        <p>Are you sure you want to delete the product "<strong><?= htmlspecialchars($productDetails['product_name']); ?></strong>"?</p>
         <form method="POST">
             <button type="submit" name="confirmDelete" class="btn btn-danger">Confirm Delete</button>
             <a href="../../index.php" class="btn btn-secondary">Cancel</a>

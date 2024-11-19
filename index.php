@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreProductId"])) 
             <table class="table table-bordered">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>ID</th>
                         <th>Product Name</th>
                         <th>Category Name</th>
@@ -52,17 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreProductId"])) 
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($products as $product): ?>
+                    <?php 
+                    $loopIndex = 1; // Initialize loop index starting from 1
+                    foreach ($products as $product): 
+                    ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($product['id']); ?></td>
-                            <td><?php echo htmlspecialchars($product['product_name']); ?></td>
-                            <td><?php echo htmlspecialchars($categoryMap[$product['category_id']] ?? 'N/A'); ?></td>
-                            <td><?php echo htmlspecialchars($product['price']); ?></td>
-                            <td><?php echo htmlspecialchars($product['stock']); ?></td>
+                            <td><?= $loopIndex++; ?></td> <!-- Display sequential number -->
+                            <td><?= htmlspecialchars($product['id']); ?></td> <!-- ID in database -->
+                            <td><?= htmlspecialchars($product['product_name']); ?></td>
+                            <td><?= htmlspecialchars($categoryMap[$product['category_id']] ?? 'N/A'); ?></td>
+                            <td><?= htmlspecialchars($product['price']); ?></td>
+                            <td><?= htmlspecialchars($product['stock']); ?></td>
                             <td>
-                                <a href="View/products/detail.php?id=<?php echo $product['id']; ?>" class="btn btn-warning btn-sm">Detail</a>
-                                <a href="View/products/update.php?id=<?php echo $product['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="View/products/delete.php?id=<?php echo $product['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="View/products/detail.php?id=<?= $product['id']; ?>" class="btn btn-warning btn-sm">Detail</a>
+                                <a href="View/products/update.php?id=<?= $product['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="View/products/delete.php?id=<?= $product['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -74,8 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["restoreProductId"])) 
 
         <!-- Assuming you want to restore a specific product, this form should be inside the loop or handled differently -->
         <form method="POST">
-            <input type="hidden" name="restoreProductId" value="<?php echo $product['id']; ?>">
-            <button type="submit" class="btn btn-secondary">Restore</button>
+            <input type="hidden" name="restoreProductId" value="<?= $product['id']; ?>">
+            <button type="submit" class="btn btn-secondary">Restore All</button>
         </form>
     </div>
 </body>
